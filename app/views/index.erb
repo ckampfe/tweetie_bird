@@ -1,23 +1,15 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
+  <h1>Welcome to Icky Tweets!</h1>
+  <form action='/<%= params[:username] %>' method='get' id="gettweets">
+    <input type='text' name='username' placeholder='twitter name' id="handle">
+    <input type='submit' value='get tweets'>
+  </form>
 
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
+  <div class='response'>
+  </div>
+ 
+  <form action='/tweet' method='post'>
+    <input type='text' name='tweet' placeholder='twitter name'>
+    <input type='submit' value='post tweet'>
+  </form>
 </div>
