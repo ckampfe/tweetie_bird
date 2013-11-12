@@ -1,4 +1,8 @@
+/* hideous procedural js */
+
 $(document).ready(function() {
+
+  // getting tweets
   $("#gettweets").submit(function( event ) {
     event.preventDefault();
     var url = $( "#handle" ).val();
@@ -11,14 +15,18 @@ $(document).ready(function() {
     });
   });
 
-
+  // sending an update
   $( "#sendtweet" ).submit( function ( event ) {
-
-
+    event.preventDefault();
+    $( "#sendtweet" ).hide();
+    $.post( "/tweet", $( "#sendtweet" ).serialize(), function( response ) {
+      var statusCode = JSON.parse(response).status;
+      console.log(statusCode);
+      if (statusCode == "ack") {
+        $( ".tweet_status" ).html("<p>Success!</p>");
+      } else if (statusCode == "nack") {
+        $( ".tweet_status" ).html("<p>Error, try again</p>");
+      }
+    });
   });
-
-
-
-
-
 });

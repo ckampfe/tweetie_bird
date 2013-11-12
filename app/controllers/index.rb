@@ -23,6 +23,20 @@ end
 #POST A TWEET
 post '/tweet' do
   if params[:tweet].length <= 140
-    Twitter.update(params[:tweet])
+   if request.xhr?
+    begin
+      Twitter.update(params[:tweet])
+      { :status => "ack" }.to_json
+    rescue
+      { :status => "nack" }.to_json
+    end
+   else
+     begin
+       Twitter.update(params[:tweet])
+       return "success"
+     rescue
+       return "fail"
+     end
+   end
   end
 end
