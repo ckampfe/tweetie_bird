@@ -1,5 +1,4 @@
 get '/' do
-
   erb :index
 end
 
@@ -20,11 +19,6 @@ get '/:username' do
     erb :_display_tweets, :layout => false
   end
 end
-
-
-
-
-
 
 #POST A TWEET
 post '/tweet' do
