@@ -1,4 +1,4 @@
-twitter.yaml
+config/twitter.yaml
 .bundle
 .DS_Store
 config/database.yml
